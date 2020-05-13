@@ -1,0 +1,17 @@
+2.Imagine a server with the following specs:
+- 4 times Intel(R) Xeon(R) CPU E7-4830 v4 @ 2.00GHz
+- 64GB of ram
+- 2 tb HDD disk space
+- 2 x 10Gbit/s nics
+The server is used for SSL offloading and proxies around 25000 requests per second.
+Please let us know which metrics are interesting to monitor in that specific case and how would you do that? What are the challenges of monitoring this?
+
+Answer:
+
+The metrics that are interestin are the 2 10Gb nics , i whould monitor thos nics via WireShark. 
+I whould do it with taking a switch and connecting the 2 10Gb nics to it, and making a port forwording to 2 diffrent ports on the switch.
+The big chalange is to get the SSL traffic decrepted and i whould to it whith putting a SSL TAP decryptor after the switch.
+p.s
+You can also use VLAN's in the switch in case you have more traffic coming into it.
+
+The rest of the server specs i whould monitor via a 3rd party program like "Prometheus" to make sure the CPU HDD and memory are not overload.
